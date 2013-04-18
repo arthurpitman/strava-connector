@@ -11,7 +11,14 @@ https://stravasite-main.pbworks.com/w/browse/#view=ViewFolderNewGuiGallery&param
 Strava terms and conditions:  
 http://app.strava.com/terms
 
-
 Prebuilt library and documentation:  
 https://github.com/arthurpitman/strava-connector/blob/master/prebuilt/StravaConnector.dll?raw=true  
 https://github.com/arthurpitman/strava-connector/raw/master/prebuilt/StravaConnector.XML
+
+Introduction to Strava (terminology)
+====================================
+Have a read of the following pages:  
+http://app.strava.com/features  
+https://strava.zendesk.com/entries/20927776-Welcome-to-Strava-  
+https://strava.zendesk.com/forums/20539808-Segments  
+https://strava.zendesk.com/entries/21278088-How-Distance-is-Calculated  
