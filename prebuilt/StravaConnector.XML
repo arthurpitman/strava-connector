@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StravaConnector</name>
+    </assembly>
+    <members>
+        <member name="T:StravaConnector.BikeModel">
+            <summary>
+            Represents a Strava bike model.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.BikeModel.#ctor(System.Object)">
+            <summary>
+            Creates a new BikeModel from a dynamic.
+            </summary>
+            <param name="stravaBike"></param>
+        </member>
+        <member name="P:StravaConnector.BikeModel.Id">
+            <summary>
+            The id of the BikeModel.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.BikeModel.Name">
+            <summary>
+            The name of the BikeModel.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.DynamicJsonConverter">
+             <summary>
+             Converts JSON to a dynamic.
+            
+             <para>
+             Based on:
+             "Using C# 4.0 and dynamic to parse JSON" by Shawn Weisfeld
+             http://www.drowningintechnicaldebt.com/ShawnWeisfeld/archive/2010/08/22/using-c-4.0-and-dynamic-to-parse-json.aspx
+             </para>
+             </summary>
+        </member>
+        <member name="M:StravaConnector.DynamicJsonConverter.Serialize(System.Object,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            Serializes an object. Not implemented.
+            </summary>
+            <param name="o"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StravaConnector.DynamicJsonConverter.Deserialize(System.Collections.Generic.IDictionary{System.String,System.Object},System.Type,System.Web.Script.Serialization.JavaScriptSerializer)">
+            <summary>
+            Deserializes an object.
+            </summary>
+            <param name="d"></param>
+            <param name="t"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="P:StravaConnector.DynamicJsonConverter.SupportedTypes">
+            <summary>
+            Gets types supported by this converter.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.DynamicJsonObject">
+             <summary>
+             Dynamic representation of a JSON object.
+            
+             <para>
+             Based on:
+             "Using C# 4.0 and dynamic to parse JSON" by Shawn Weisfeld
+             http://www.drowningintechnicaldebt.com/ShawnWeisfeld/archive/2010/08/22/using-c-4.0-and-dynamic-to-parse-json.aspx
+             </para>
+             </summary>
+        </member>
+        <member name="M:StravaConnector.DynamicJsonObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates a new DynamicJsonObject based on a dictionary.
+            </summary>
+            <param name="dictionary"></param>
+        </member>
+        <member name="M:StravaConnector.DynamicJsonObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Attempts to get a value for a member.
+            </summary>
+            <param name="binder"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StravaConnector.Effort">
+            <summary>
+            Represents a Strava effort.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.Movement">
+            <summary>
+            Common base class for Strava rides and efforts.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.Movement.#ctor(System.Object)">
+            <summary>
+            Creates a new Movement from a dynamic.
+            </summary>
+            <param name="stravaMovement"></param>
+        </member>
+        <member name="P:StravaConnector.Movement.Id">
+            <summary>
+            The id of the Movement.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.StartDate">
+            <summary>
+            Start date and time GMT.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.StartDateLocal">
+            <summary>
+            Start date and time with local time zone
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.TimeZoneOffset">
+            <summary>
+            Offset of time zone in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.ElapsedTime">
+            <summary>
+            Total elaspsed time in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.MovingTime">
+            <summary>
+            Total moving time in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.Distance">
+            <summary>
+            Distance in meters.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.AverageSpeed">
+            <summary>
+            Average speed in kilometers per hour.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.AverageWatts">
+            <summary>
+            Average watts.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.MaximumSpeed">
+            <summary>
+            Maximum speed in kilometers per hour.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Movement.ElevationGain">
+            <summary>
+            Difference between end and start elevation in meters.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.Effort.#ctor(System.Object)">
+            <summary>
+            Creates a new Effort from a dynamic.
+            </summary>
+            <param name="stravaEffort"></param>
+        </member>
+        <member name="M:StravaConnector.Effort.ById(System.Int64)">
+            <summary>
+            Retrieves an Effort by id.
+            </summary>
+            <param name="id"></param>
+            <returns>The Effort.</returns>
+        </member>
+        <member name="P:StravaConnector.Effort.SegmentId">
+            <summary>
+            The Segment id.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Effort.Athlete">
+            <summary>
+            The Strava user associated with the effort.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Effort.RideId">
+            <summary>
+            The Ride id.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Effort.Stream">
+            <summary>
+            Lazy acccess to the effort stream.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.EffortStream">
+             <summary>
+             Represents a Strava effort stream.
+            
+             <para>
+             Note, some properties may be null if information is missing.
+             </para>
+             </summary>
+        </member>
+        <member name="M:StravaConnector.EffortStream.#ctor">
+            <summary>
+            Creates a new empty EffortStream.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.EffortStream.#ctor(System.Object)">
+            <summary>
+            Creates a new EffortStream from a dynamic.
+            </summary>
+            <param name="stravaEffortStream"></param>
+        </member>
+        <member name="M:StravaConnector.EffortStream.ToDoubleArray(System.Object)">
+            <summary>
+            Converts a dynamic to a double array.
+            </summary>
+            <param name="d">The dynamic to convert.</param>
+            <returns>The double array.</returns>
+        </member>
+        <member name="M:StravaConnector.EffortStream.ToBoolArray(System.Object)">
+            <summary>
+            Converts a dynamic to a bool array.
+            </summary>
+            <param name="d">The dynamic to convert.</param>
+            <returns>The bool array.</returns>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Altitude">
+            <summary>
+            The altitude component of the EffortStream, maybe fixed by Strava?
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.OriginalAltitude">
+            <summary>
+            The original altitude component of the EffortStream, presumably as recorded by the device.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Distance">
+            <summary>
+            The distance component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.SmoothedGradient">
+            <summary>
+            The smoothed gradient component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Latitude">
+            <summary>
+            The latitude component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Longitude">
+            <summary>
+            The longitude component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Moving">
+            <summary>
+            The moving component of the EffortStream. <c>true</c> indicates movement.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Outlier">
+            <summary>
+            The outlier component of the EffortStream. <c>true</c> indicates an outlier point.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Resting">
+            <summary>
+            The resting component of the EffortStream. <c>true</c> indicates rest at this point.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.Time">
+            <summary>
+            The time component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.TotalElevation">
+            <summary>
+            The total elevation component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.SmoothedVelocity">
+            <summary>
+            The smoothed velocity component of the EffortStream.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.ExtendedProperties">
+            <summary>
+            Indicates presence of extended properties.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.EffortStream.CalculatedWatts">
+            <summary>
+            The calculated watts component of the EffortStream. <c>true</c> indicates movement at this point.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.Ride">
+            <summary>
+            Represents a Strava ride.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Ride.ResultCount">
+            <summary>
+            Maximum number of search results that can be retrieved in one request.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.Ride.#ctor(System.Object)">
+            <summary>
+            Creates a new Ride from a dynamic.
+            </summary>
+            <param name="stravaRide"></param>
+        </member>
+        <member name="M:StravaConnector.Ride.ById(System.Int64)">
+            <summary>
+            Retrieves a Ride by id.
+            </summary>
+            <param name="id"></param>
+            <returns>The Ride.</returns>
+        </member>
+        <member name="M:StravaConnector.Ride.Search(System.Int64,System.Int64,System.Nullable{System.Int64},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Searches for Rides based on criteria.
+            </summary>
+            <param name="offset">Offset in search results.</param>
+            <param name="count">Number of results to retrieve.</param>
+            <param name="athleteId">Athlete id restriction, null for no restriction.</param>
+            <param name="athleteName">Athlete name restriction, null for no restriction.</param>
+            <param name="startDate">Start date restriction, null for no restriction.</param>
+            <param name="endDate">End date restriction, null for no restriction.</param>
+            <param name="clubId">Club id restriction, null for no restriction.</param>
+            <param name="startId">Only retrieve rides with an id greater or equal to the start id, null for no restriction.</param>
+            <returns>A list of RideSearchResult objects.</returns>
+        </member>
+        <member name="M:StravaConnector.Ride.GetEfforts">
+            <summary>
+            Populate the Ride's efforts.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Location">
+            <summary>
+            Location of the Ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Name">
+            <summary>
+            User defined name for the ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Bike">
+            <summary>
+            Bike used for the Ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Description">
+            <summary>
+            Description of the Ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Commute">
+            <summary>
+            If <c>true</c>, the Ride was a commute.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Trainer">
+            <summary>
+            If <c>true</c>, the Ride was training.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Athlete">
+            <summary>
+            The user.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Ride.Efforts">
+            <summary>
+            Lazy access to the Ride's efforts.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.RideEffort">
+            <summary>
+            Light weight class used to tie an effort to a ride (and a segment).
+            </summary>
+        </member>
+        <member name="M:StravaConnector.RideEffort.#ctor(System.Object)">
+            <summary>
+            Creates a new RideEffort from a dynamic.
+            </summary>
+            <param name="stravaRideEffort"></param>
+        </member>
+        <member name="P:StravaConnector.RideEffort.EffortId">
+            <summary>
+            The id of the Effort.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.RideEffort.ElapsedTime">
+            <summary>
+            Elapsed time in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.RideEffort.SegmentId">
+            <summary>
+            The id of the Segment.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.RideSearchResult">
+            <summary>
+            Light weight class for a ride search results.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.RideSearchResult.#ctor(System.Object)">
+            <summary>
+            Creates a new RideSearchResult from a dynamic.
+            </summary>
+            <param name="rideSearchResult"></param>
+        </member>
+        <member name="P:StravaConnector.RideSearchResult.Id">
+            <summary>
+            The id of the Ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.RideSearchResult.Name">
+            <summary>
+            The name of the Ride.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.Segment">
+            <summary>
+            Represents a Strava segment.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ResultCount">
+            <summary>
+            Maximum number of search results that can be retrieved in one request.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.Segment.#ctor(System.Object)">
+            <summary>
+            Creates a new Segment from a dynamic.
+            </summary>
+            <param name="stravaSegment"></param>
+        </member>
+        <member name="M:StravaConnector.Segment.ById(System.Int64)">
+            <summary>
+            Retrieves a Segment by id.
+            </summary>
+            <param name="id"></param>
+            <returns>The Segment.</returns>
+        </member>
+        <member name="M:StravaConnector.Segment.GetEfforts(System.Int64,System.Int64,System.Boolean,System.Nullable{System.Int64},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.Int64},System.Nullable{System.Int64})">
+            <summary>
+            Retrieves SegmentEfforts based on search criteria.
+            </summary>
+            <param name="offset">Offset in search results.</param>
+            <param name="count">Number of results to retrieve.</param>
+            <param name="best">Request best efforts per athlete sorted by elapsed time ascending -- may not work as expected due to Strava bugs.</param>
+            <param name="athleteId">Athlete id restriction, null for no restriction.</param>
+            <param name="athleteName">Athlete name restriction, null for no restriction.</param>
+            <param name="startDate">Start date restriction, null for no restriction.</param>
+            <param name="endDate">End date restriction, null for no restriction.</param>
+            <param name="clubId">Club id restriction, null for no restriction.</param>
+            <param name="startId">Request efforts with an Id greater than or equal to the startId.</param>
+            <returns>A list of SegmentEffort objects.</returns>
+        </member>
+        <member name="M:StravaConnector.Segment.ToClimbCategory(System.String)">
+            <summary>
+            Maps a string to a ClimbCategoryType.
+            </summary>
+            <param name="climbCategory"></param>
+            <returns>A ClimbCategoryType.</returns>
+        </member>
+        <member name="P:StravaConnector.Segment.Id">
+            <summary>
+            The id of the Segment.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.Name">
+            <summary>
+            The name of the Segment.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.Distance">
+            <summary>
+            Length of the Segment, in meters.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.ElevationGain">
+            <summary>
+            Elevation gain of the Segment, in meters.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.ElevationHigh">
+            <summary>
+            Highest point of the Segment, in meters.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.ElevationLow">
+            <summary>
+            Lowest point of the Segment, in meters.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.AverageGradient">
+            <summary>
+            Average gradient of the Segment.
+            TODO: determine unit!
+            </summary>
+        </member>
+        <member name="P:StravaConnector.Segment.ClimbCategory">
+            <summary>
+            The climb category of the Segment.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.Segment.ClimbCategoryType">
+            <summary>
+            Represents climb category type.
+            <para>
+            See https://strava.zendesk.com/entries/20945952-what-are-segments for details.
+            </para>
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.NoCategory">
+            <summary>
+            No climb category.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.CategoryHc">
+            <summary>
+            The hardest category, beyond categorization.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.Category1">
+            <summary>
+            Second hardest category.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.Category2">
+            <summary>
+            Third hardest category.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.Category3">
+            <summary>
+            Fourth hardest category.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.Segment.ClimbCategoryType.Category4">
+            <summary>
+            Easiest category.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.SegmentEffort">
+            <summary>
+            Ties an effort to a ride (and a segment).
+            </summary>
+        </member>
+        <member name="M:StravaConnector.SegmentEffort.#ctor(System.Object,System.Int64)">
+            <summary>
+            Creates a new SegmentEffort from a dynamic with the given segment id.
+            </summary>
+            <param name="stravaSegmentEffort"></param>
+            <param name="segmentId"></param>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.EffortId">
+            <summary>
+            The id of the Effort.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.RideId">
+            <summary>
+            The id of the Ride.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.SegmentId">
+            <summary>
+            The id of the Segment.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.StartDate">
+            <summary>
+            Start date and time GMT.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.StartDateLocal">
+            <summary>
+            Start date and time with local time zone
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.TimeZoneOffset">
+            <summary>
+            Offset of the time zone in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.ElapsedTime">
+            <summary>
+            Total elaspsed time in seconds.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.SegmentEffort.Athlete">
+            <summary>
+            The user.
+            </summary>
+        </member>
+        <member name="T:StravaConnector.StravaApi">
+            <summary>
+            Wrapper around the Strava version 1 API.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.StravaApi.apiBase">
+            <summary>
+            Based URL for the api.
+            </summary>
+        </member>
+        <member name="F:StravaConnector.StravaApi.retryCount">
+            <summary>
+            Number of retries.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.StravaApi.Call(System.String)">
+            <summary>
+            Calls the Strava API and parses the JSON response.
+            </summary>
+            <param name="request">the actual request.</param>
+            <returns> A dynamic representing the response.</returns>
+        </member>
+        <member name="T:StravaConnector.StravaApiException">
+            <summary>
+            Wraps exceptions that occur within the api.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.StravaApiException.#ctor">
+            <summary>
+            Creates a new StravaApiException.
+            </summary>
+        </member>
+        <member name="M:StravaConnector.StravaApiException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a new StravaApiException with a message and inner exception.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:StravaConnector.User">
+            <summary>
+            Represents a Strava user (athlete).
+            </summary>
+        </member>
+        <member name="M:StravaConnector.User.#ctor(System.Object)">
+            <summary>
+            Creates a new User from a dynamic.
+            </summary>
+            <param name="stravaAthlete"></param>
+        </member>
+        <member name="P:StravaConnector.User.Id">
+            <summary>
+            The user id.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.User.Name">
+            <summary>
+            The user's full name.
+            </summary>
+        </member>
+        <member name="P:StravaConnector.User.Username">
+            <summary>
+            Strava username (unique?).
+            </summary>
+        </member>
+    </members>
+</doc>
